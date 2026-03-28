@@ -1,0 +1,372 @@
+/* Базовые настройки и шрифты */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0d0d0d; /* Фон */
+    color: #ffffff; /* Текст */
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+/* Прелоадер */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d0d0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #1a1a1a;
+    border-top: 3px solid #3a6ff7; /* Акцент */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+#percent {
+    font-weight: 600;
+    color: #bfbfbf;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Навигация */
+nav {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    background: rgba(13, 13, 13, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: #bfbfbf;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #3a6ff7; /* Акцент при наведении */
+}
+
+/* Hero секция */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.hero h4 {
+    font-size: 14px;
+    color: #3a6ff7;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.hero hr {
+    width: 50px;
+    border: none;
+    border-top: 1px solid #bfbfbf;
+    margin-bottom: 30px;
+}
+
+.hero h5 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: 800px;
+    line-height: 1.1;
+}
+
+.hero p {
+    color: #bfbfbf;
+    max-width: 600px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Кнопка */
+button {
+    display: block;
+    margin: 0 auto 100px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 15px 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #0d0d0d;
+}
+
+/* MODAL STYLES */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    background-color: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px);
+
+    justify-content: center;
+    align-items: center;
+
+     overflow-y: auto; /* ВОТ ЭТО КЛЮЧ */
+    padding: 40px 0;   /* чтобы не прилипало к краям */
+}
+.modal-content {
+    background-color: #1a1a1a;
+    padding: 60px;
+    border: 1px solid #262626;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    animation: modalAppear 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    margin: auto;
+}
+
+@keyframes modalAppear {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Кнопка закрытия */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    color: #4d4d4d;
+    font-size: 30px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #ffffff;
+}
+
+/* Заголовки модалки */
+.modal-content h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.modal-content h3 {
+    font-size: 18px;
+    color: #3a6ff7;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.modal-content .desc {
+    color: #bfbfbf;
+    font-size: 14px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Поля формы */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content input, 
+.modal-content textarea {
+    background: #0d0d0d;
+    border: 1px solid #262626;
+    padding: 15px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.modal-content input:focus, 
+.modal-content textarea:focus {
+    border-color: #3a6ff7;
+}
+
+.modal-content textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* Кнопка в модалке */
+.modal-content button[type="submit"] {
+    background-color: #3a6ff7;
+    color: #ffffff;
+    border: none;
+    padding: 18px;
+    margin-top: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: #2a56c6;
+}
+
+.bottom-text {
+    margin-top: 30px;
+    font-size: 11px;
+    color: #4d4d4d;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: #0d0d0d;
+    color: white;
+    padding: 16px 20px;
+    margin-top: 10px;
+    border-radius: 12px;
+    border: 1px solid #1a1a1a;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.success {
+    border-left: 3px solid #00ff88;
+}
+
+.toast.error {
+    border-left: 3px solid #ff3b3b;
+}
+
+/* Адаптив для маленьких экранов */
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 40px 20px;
+        margin: 10% auto;
+    }
+}
+
+/* Футер */
+.footer {
+    background-color: #1a1a1a; /* Светлее черного */
+    padding: 60px 20px 30px;
+    border-top: 1px solid #262626;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.footer-brand span {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.footer-links a {
+    color: #bfbfbf;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 12px;
+    color: #4d4d4d;
+    border-top: 1px solid #262626;
+    padding-top: 20px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hero h5 { font-size: 32px; }
+    .footer-inner { flex-direction: column; gap: 30px; }
+    .footer-links a { margin: 0 15px; }
+}

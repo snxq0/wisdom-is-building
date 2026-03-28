@@ -1,0 +1,177 @@
+/* academy.css */
+
+/* Главный контейнер */
+.container {
+    display: flex;
+    min-height: calc(100vh - 80px); /* Вычитаем высоту навбара */
+    background-color: #0d0d0d;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 380px;
+    padding: 80px 50px;
+    border-right: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: sticky;
+    top: 80px; /* Фиксация сразу под навбаром */
+    height: calc(100vh - 80px);
+    background-color: #0d0d0d;
+}
+
+.sidebar-item {
+    font-size: 13px;
+    color: #4d4d4d;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 12px 0;
+    border-bottom: 1px solid transparent;
+}
+
+.sidebar-item:hover {
+    color: #bfbfbf;
+}
+
+/* Активное состояние */
+.sidebar-item.active {
+    color: #3a6ff7; /* Наш акцентный цвет */
+    font-weight: 600;
+    padding-left: 15px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+/* Декоративный индикатор для активного пункта */
+.sidebar-item.active::before {
+    content: '[';
+    margin-right: 10px;
+    color: #3a6ff7;
+}
+
+.sidebar-item.active::after {
+    content: ']';
+    margin-left: 10px;
+    color: #3a6ff7;
+}
+
+/* --- CONTENT AREA --- */
+.content {
+    flex: 1;
+    padding: 120px 100px;
+    background-color: #0d0d0d;
+}
+
+.content-block {
+    display: none;
+    max-width: 700px;
+    animation: slideUp 0.5s ease-out;
+}
+
+.content-block.active {
+    display: block;
+}
+
+.content-block h1 {
+    font-size: 56px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+}
+
+.content-block p {
+    font-size: 22px;
+    color: #bfbfbf;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/* Акцент на важные слова внутри параграфов, если добавите <strong> */
+.content-block strong {
+    color: #ffffff;
+    border-bottom: 1px solid #3a6ff7;
+}
+
+/* Анимация переключения */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- TABLET --- */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        padding: 20px 25px;
+        flex-direction: row;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid #1a1a1a;
+        gap: 25px;
+    }
+
+    .sidebar-item {
+        white-space: nowrap;
+        font-size: 12px;
+    }
+
+    .sidebar-item.active {
+        border-bottom: 2px solid #3a6ff7;
+        border-right: none;
+        padding-left: 0;
+    }
+
+    .content {
+        padding: 60px 25px;
+    }
+
+    .content-block h1 {
+        font-size: 38px;
+    }
+}
+
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+
+    .sidebar {
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .sidebar-item {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .content {
+        padding: 40px 15px;
+    }
+
+    .content-block h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .content-block p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+}

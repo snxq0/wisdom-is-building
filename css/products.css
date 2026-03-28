@@ -1,0 +1,123 @@
+/* products.css */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 80px;
+    text-align: center;
+}
+
+/* Заголовки страницы */
+h1 {
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #3a6ff7; /* Акцентный синий */
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 60px;
+}
+
+/* Сетка карточек */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Карточка продукта */
+.card {
+    background-color: #1a1a1a; /* Тёмно-серый */
+    border: 1px solid #262626;
+    padding: 40px 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    border-color: #3a6ff7;
+    transform: translateY(-5px);
+    background-color: #1d1d1d;
+}
+
+/* Декоративный номер или деталь в углу карточки */
+.card::after {
+    content: "TOOL";
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 9px;
+    color: #4d4d4d;
+    letter-spacing: 1px;
+}
+
+.card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.card p {
+    font-size: 15px;
+    color: #bfbfbf;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+/* Кнопка "Get" */
+.button {
+    display: inline-block;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card:hover .button {
+    background-color: #3a6ff7;
+    border-color: #3a6ff7;
+}
+
+.button:hover {
+    background-color: #ffffff !important;
+    color: #0d0d0d !important;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+    
+    .container {
+        padding-top: 100px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* На мобилках в одну колонку */
+    }
+
+    .card {
+        padding: 30px 25px;
+    }
+}

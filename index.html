@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="./assets/favicon/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/style.css"> 
+
+    <title>Wisdom is Building</title>
+</head>
+<body>
+
+    <nav style="text-decoration:none;">
+        <a href="pages/about.html">Про нас</a>
+        <a href="pages/academy.html">Академия</a>
+        <a href="pages/products.html">Продукты</a>
+        <a href="pages/contacts.html">Контакты</a>
+    </nav>
+
+    <div class="hero">
+        <h4>Wisdom is Building</h4>
+        <hr>
+        <h5>Строй свою систему. А не мотивацию</h5>
+        <p>Академия мышления, дисциплины и системной жизни</p>
+        <p>Ты не ленивый. У тебя нет системы. <br>
+            Мы не мотивируем. Мы строим структуру <br>
+        </p>
+
+        <button onclick="openModal()">Присоединиться</button>
+    </div>
+
+
+    <div class="modal" id="modal">
+  <div class="modal-content">
+
+    <span class="close" id="closeModal">&times;</span>
+
+    <h2>Тебе не нужна мотивация.</h2>
+    <h3>Тебе нужна система.</h3>
+
+
+    <form id="tg-form" method="POST">
+        <input type="text" id="website" style="display:none">
+  <input type="text" id="name" placeholder="Имя" required>
+  <input type="text" id="tg_user" placeholder="Телеграм @username" required>
+  <input type="number" id="age" placeholder="Возраст" required>
+  <textarea id="reason" placeholder="Какая твоя цель системы?" required></textarea>
+
+  <button type="submit">Отправить</button>
+</form>
+
+
+  </div>
+</div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            
+            <div class="footer-brand">
+            <span>WiB</span>
+            </div>
+
+            <div class="footer-links">
+            <a href="/impressum">Impressum</a>
+            <a href="/datenschutz">Datenschutz</a>
+            <a href="/agb">AGB</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 WiB
+        </div>
+    </footer>
+
+    <script src="./js/modal.js"></script>
+    
+    
+<div id="toast-container"></div>
+</body>
+</html>

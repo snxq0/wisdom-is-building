@@ -1,0 +1,67 @@
+/* about.css */
+
+/* Специфичная настройка Hero для страницы About,
+   чтобы она отличалась от главной, но сохраняла стиль */
+.hero {
+    height: 60vh; /* Чуть меньше высоту, чем на главной */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Стили заголовков внутри .hero на этой странице */
+.hero h2 {
+    font-size: 14px;
+    color: #3a6ff7; /* Наш минимальный акцент */
+    text-transform: uppercase;
+    letter-spacing: 5px; /* Сильный межбуквенный интервал для "системного" вида */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.hero h4 {
+    font-size: 48px; /* Крупный, уверенный заголовок */
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    max-width: 800px;
+}
+
+/* Обертка для основного текста */
+.about-wrapper {
+    max-width: 700px; /* Ограничиваем ширину для удобства чтения */
+    margin: 0 auto; /* Центрируем блок */
+    padding: 0 20px 100px 20px; /* Отступы по бокам и снизу */
+}
+
+/* Стилизация текста */
+.about-wrapper p {
+    font-size: 20px;
+    line-height: 1.8; /* Увеличенный интервал для легкости */
+    color: #bfbfbf; /* Холодный серый для основного текста */
+    font-weight: 300; /* Легкое начертание */
+}
+
+/* Выделение сильных фраз */
+.about-wrapper strong {
+    color: #ffffff; /* Белый для акцента в тексте */
+    font-weight: 600;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+
+    .hero h4 {
+        font-size: 32px;
+    }
+
+    .about-wrapper p {
+        font-size: 18px;
+    }
+}
