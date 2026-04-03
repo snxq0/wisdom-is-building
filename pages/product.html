@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ТВОЙ СТИЛЬ (сократил только лишнее) */
+body {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 700px;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.tag {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #3a6ff7;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    color: #bfbfbf;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.price {
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+.features {
+    text-align: left;
+    margin: 40px 0;
+}
+
+.features li {
+    margin-bottom: 10px;
+    color: #bfbfbf;
+}
+.back {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #bfbfbf;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.back:hover {
+    color: #ffffff;
+}
+button {
+    width: 100%;
+    padding: 18px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: white;
+    color: #0d0d0d;
+}
+
+.note {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #4d4d4d;
+}
+
+/* --- Адаптивная часть (вставь в конец файла) --- */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 60px 20px; /* Уменьшаем гигантский отступ в 100px */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 30px; /* Уменьшаем заголовок, чтобы не переносился коряво */
+    }
+
+    .features {
+        margin: 30px 0;
+        display: inline-block; /* Чтобы список не растягивался слишком сильно */
+        text-align: left;
+    }
+
+    button {
+        width: 100%; /* Убеждаемся, что кнопка на весь экран */
+    }
+
+    .back {
+        top: 20px;
+        left: 20px;
+    }
+}
+
+/* Фикс для очень маленьких телефонов */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 26px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="back" onclick="goBack()">← Назад</div>
+
+    <div class="tag">TOOL</div>
+
+    <h1 id="title">Loading...</h1>
+
+    <div class="subtitle" id="subtitle"></div>
+
+    <div class="price" id="price"></div>
+
+    <ul class="features" id="features"></ul>
+
+    <button onclick="goToPayment()" id="cta">
+        Start →
+    </button>
+
+    <div class="note">Cancel anytime</div>
+
+</div>
+
+<script>
+// получаем параметры
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+const product = params.get("product");
+
+// данные продуктов (расширяемо)
+const products = {
+  journal: {
+    title: "WiB Journal",
+    subtitle: "Отслеживай, что ты реально делаешь — а не что думаешь.",
+    price: "€9",
+    features: [
+      "Ежедневный трекинг",
+      "Система дисциплины",
+      "Четкий процесс"
+    ],
+    payment: "https://buy.stripe.com/test_3cI4gy87a7tlcNQ07i7wA00"
+  },
+
+  hobby: {
+    title: "Hobby Tracker",
+    subtitle: "Build consistency in what you enjoy.",
+    price: "€5 / month",
+    features: [
+      "Track hobbies",
+      "Stay consistent",
+      "Visual progress"
+    ],
+    payment: "https://buy.stripe.com/yyyyy"
+  }
+};
+
+// дефолт
+const current = products[product] || products.journal;
+
+// персонализация
+let finalTitle = current.title;
+
+if (name) {
+  finalTitle = name + ", this is your system.";
+}
+
+// вставка в страницу
+document.getElementById("title").textContent = finalTitle;
+document.getElementById("subtitle").textContent = current.subtitle;
+document.getElementById("price").textContent = current.price;
+
+// список
+const ul = document.getElementById("features");
+current.features.forEach(f => {
+  const li = document.createElement("li");
+  li.textContent = f;
+  ul.appendChild(li);
+});
+
+// title вкладки
+document.title = current.title + " — Start";
+
+// переход на оплату
+function goToPayment() {
+  window.location.href = current.payment;
+}
+
+function goBack() {
+  if (document.referrer) {
+    window.location.href = document.referrer;
+  } else {
+    window.location.href = "index.html";
+  }
+}
+</script>
+
+</body>
+</html>

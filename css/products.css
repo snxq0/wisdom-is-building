@@ -33,7 +33,11 @@ h1 {
 
 /* Карточка продукта */
 .card {
-    background-color: #1a1a1a; /* Тёмно-серый */
+     background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.01)
+  ); /* Тёмно-серый */
     border: 1px solid #262626;
     padding: 40px 30px;
     text-align: left;

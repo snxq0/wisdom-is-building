@@ -31,13 +31,17 @@
   
         <div class="card">
             <h2>WiB Journal</h2>
-            <p>Track your behavior. Build discipline. See your system.</p>
-            <div onclick="openModal()" class="button">Get</div>
+            <p>Отслеживай поведение. Строй дисциплину. Следи за системой.</p>
+            <a  style="text-decoration: none;" href="product.html" class="button" target="_blank">Получить доступ</a>
         </div>
 
         <div class="card">
-            <h2>Coming soon...</h2>
+            <h2>Build your hobby</h2>
+            <p>Отслеживай и строй свои хобби.</p>
+            <p style="text-align:center; font-size:20px; ">Запуск скоро</p>
+            <div onclick="showToast('Терпение превышает импульс')" class="button">Получить доступ</div>
         </div>
+
     </div>
 
 </div>
@@ -55,6 +59,25 @@
     </footer>
 
 
+<div id="toast-container"></div>
 
+<script>
+    function showToast(message, type = "success") {
+    const container = document.getElementById("toast-container");
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerText = message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.add("show"), 50);
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+</script>
 </body>
 </html>
