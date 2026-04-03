@@ -1,20 +1,37 @@
 const items = document.querySelectorAll('.sidebar-item');
 const blocks = document.querySelectorAll('.content-block');
 
-items.forEach(item => {
-    item.addEventListener('mouseenter', () => {
+// определяем есть ли hover (ПК)
+const isHoverDevice = window.matchMedia('(hover: hover)').matches;
 
-        items.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-
-        const id = item.getAttribute('data-id');
-
-        blocks.forEach(block => {
-            block.classList.remove('active');
-            if (block.getAttribute('data-id') === id) {
-                block.classList.add('active');
-            }
-        });
-
+// универсальная функция активации
+function activate(id) {
+    // sidebar
+    items.forEach(item => {
+        item.classList.toggle('active', item.dataset.id === id);
     });
+
+    // контент
+    blocks.forEach(block => {
+        block.classList.toggle('active', block.dataset.id === id);
+    });
+}
+
+// навешиваем события
+items.forEach(item => {
+
+    const id = item.dataset.id;
+
+    // ПК → hover
+    if (isHoverDevice) {
+        item.addEventListener('mouseenter', () => activate(id));
+    }
+
+    // телефон → клик
+    item.addEventListener('click', () => {
+        if (!isHoverDevice) {
+            activate(id);
+        }
+    });
+
 });

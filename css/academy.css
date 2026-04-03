@@ -96,6 +96,12 @@
     border-bottom: 1px solid #3a6ff7;
 }
 
+@media (hover: hover) {
+    .sidebar-item:hover {
+        color: #bfbfbf;
+    }
+}
+
 /* Анимация переключения */
 @keyframes slideUp {
     from {
