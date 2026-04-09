@@ -18,6 +18,7 @@
         <a href="../index.html">Главная</a>
         <a href="about.html">Про нас</a>
         <a href="academy.html">Академия</a>
+        <a onclick="showToast('Скоро')" href="#">Наш бар</a>
         <a href="products.html">Продукты и инструменты</a>
         <a href="contacts.html">Контакты</a>
     </nav>
@@ -79,8 +80,26 @@
         </div>
         <div class="footer-bottom">© 2026 WiB</div>
     </footer>
-
+<div id="toast-container"></div>
 <script src="../js/sidebar.js" defer></script>
 
+<script>
+    function showToast(message, type = "success") {
+    const container = document.getElementById("toast-container");
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerText = message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.add("show"), 50);
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+</script>
 </body>
 </html>

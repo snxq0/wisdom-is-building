@@ -15,6 +15,7 @@
     <nav style="text-decoration:none;">
         <a href="pages/about.html">Про нас</a>
         <a href="pages/academy.html">Академия</a>
+        <a onclick="showToast('Скоро')" href="#">Наш бар</a>
         <a href="pages/products.html">Продукты и инструменты</a>
         <a href="pages/contacts.html">Контакты</a>
     </nav>
@@ -79,5 +80,25 @@
     
     
 <div id="toast-container"></div>
+
+
+<script>
+    function showToast(message, type = "success") {
+    const container = document.getElementById("toast-container");
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerText = message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.add("show"), 50);
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+</script>
 </body>
 </html>
